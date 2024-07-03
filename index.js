@@ -1,86 +1,53 @@
-// DOM elements
-const products = [
-    { id: 1, name: "IPhone 11 ProMax", qtyId: "qty1", priceId: "price1" },
-    { id: 2, name: "IPhone XR", qtyId: "qty2", priceId: "price2" },
-    { id: 3, name: "IPhone 13 ProMax", qtyId: "qty3", priceId: "price3" },
-    { id: 4, name: "IPhone 14 ProMax", qtyId: "qty4", priceId: "price4" },
-    { id: 5, name: "IPhone 15 ProMax", qtyId: "qty5", priceId: "price5" }
-];
+var product1 = document.getElementById("product1");
+var qty1 = document.getElementById("qty1");
+var price1 = document.getElementById("price1");
+var product2 = document.getElementById("product2");
+var qty2 = document.getElementById("qty2");
+var price2 = document.getElementById("price2");
+var carts = document.getElementById("carts");
+var totalInput = document.getElementById("total");
+var cashInput = document.getElementById("cash");
+var changeInput = document.getElementById("change");
 
-const carts = document.getElementById("carts");
-const totalInput = document.getElementById("total");
-const cashInput = document.getElementById("cash");
-const changeInput = document.getElementById("change");
+function addOrder() {
+    carts.textContent = "";
 
-// Utility function to get price from price label
-function getPrice(priceLabel) {
-    return parseFloat(priceLabel.textContent.trim());
-}
-
-// Function to add orders to the cart
-function addOrder(product, qtyInput, priceLabel) {
-    const qty = parseFloat(qtyInput.value);
-    if (!isNaN(qty) && qty > 0) {
-        const order = `${qty} pcs x ${product.name} - Php ${(qty * getPrice(priceLabel)).toFixed(2)}\n`;
-        carts.textContent += order;
+    if (parseFloat(qty1.value) > 0) {
+        var order1 = qty1.value.toString() + " pcs x " + product1.textContent + " - Php " + (parseFloat(qty1.value) * parseFloat(price1.textContent)).toFixed(2) + "\n";
+        carts.textContent += order1;
     }
+
+    if (parseFloat(qty2.value) > 0) {
+        var order2 = qty2.value.toString() + " pcs x " + product2.textContent + " - Php " + (parseFloat(qty2.value) * parseFloat(price2.textContent)).toFixed(2) + "\n";
+        carts.textContent += order2;
+    }
+
+    updateTotal(); // Update total after adding orders
 }
 
-// Function to update total based on selected quantities
 function updateTotal() {
-    let total = 0;
-    products.forEach(product => {
-        const qtyInput = document.getElementById(product.qtyId);
-        const qty = parseFloat(qtyInput.value);
-        if (!isNaN(qty) && qty > 0) {
-            total += qty * getPrice(document.getElementById(product.priceId));
-        }
-    });
-    totalInput.value = total.toFixed(2);
-    calculateChange();
+    var total = 0;
+
+    total += parseFloat(qty1.value) * parseFloat(price1.textContent);
+
+    total += parseFloat(qty2.value) * parseFloat(price2.textContent);
+
+    totalInput.value = total.toFixed(2); // Update total input field
+    calculateChange(); // Calculate change after updating total
 }
 
-// Function to calculate change based on cash input
 function calculateChange() {
-    const total = parseFloat(totalInput.value);
-    const cash = parseFloat(cashInput.value);
+    var total = parseFloat(totalInput.value);
+    var cash = parseFloat(cashInput.value);
 
     if (!isNaN(total) && !isNaN(cash)) {
-        const change = cash - total;
-        changeInput.value = change.toFixed(2);
+        var change = cash - total;
+        changeInput.value = change.toFixed(2); // Update change input field
     } else {
         changeInput.value = "";
     }
 }
 
-// Function to handle buying products
-function buyProducts() {
-    carts.textContent = ""; // Clear cart before adding new orders
-    products.forEach(product => {
-        const qtyInput = document.getElementById(product.qtyId);
-        addOrder(product, qtyInput, document.getElementById(product.priceId));
-    });
-    updateTotal();
-
-    const total = parseFloat(totalInput.value);
-    const cash = parseFloat(cashInput.value);
-
-    if (!isNaN(total) && !isNaN(cash)) {
-        if (cash >= total) {
-            const change = cash - total;
-            changeInput.value = change.toFixed(2);
-            alert(`Purchase successful!\nChange: Php ${change.toFixed(2)}`);
-        } else {
-            alert("Insufficient cash!");
-        }
-    } else {
-        alert("Please enter valid amounts for cash and quantities.");
-    }
-}
-
-// Event listeners
-products.forEach(product => {
-    const qtyInput = document.getElementById(product.qtyId);
-    qtyInput.addEventListener("keyup", updateTotal);
-});
+qty1.addEventListener("keyup", addOrder);
+qty2.addEventListener("keyup", addOrder);
 cashInput.addEventListener("input", calculateChange);
