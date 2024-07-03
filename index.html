@@ -13,51 +13,51 @@
     <div class="container">
         <div class="row">
             <div class="col-12 text-center">
-                <h2>Paul's Perfume</h2>
+                <h2>IPhone Store</h2>
                 <hr class="hr" />
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <label id="product1">IPhone 11 ProMax</label>
-                <img src="IP11.png" style="width:550px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product1" id="price1">80990.00</label>
+        <div class="row text-center">
+            <div class="col-4">
+                <label class="product-label" id="product1">IPhone 11 ProMax</label>
+                <img src="IP11.png" class="img-thumbnail product-image"/><br>
+                <label for="product1" class="product-price" id="price1">₱80,990.00</label>
                 <input type="number" class="form-control" id="qty1" placeholder="Enter quantity"/><br>
             </div>
-            <div class="col-4 text-center">
-                <label id="product2">IPhone XR</label>
-                <img src="IPxr.png" style="width:550px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product2" id="price2">49769.00</label>
+            <div class="col-4">
+                <label class="product-label" id="product2">IPhone XR</label>
+                <img src="IPxr.png" class="img-thumbnail product-image"/><br>
+                <label for="product2" class="product-price" id="price2">₱49,769.00</label>
                 <input type="number" class="form-control" id="qty2" placeholder="Enter quantity"/><br>
             </div>
-            <div class="col-4 text-center">
-                <label id="product3">IPhone 13 ProMax</label>
-                <img src="IP13.png" style="width:550px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product3" id="price3">79789.00</label>
+            <div class="col-4">
+                <label class="product-label" id="product3">IPhone 13 ProMax</label>
+                <img src="IP13.png" class="img-thumbnail product-image"/><br>
+                <label for="product3" class="product-price" id="price3">₱79,789.00</label>
                 <input type="number" class="form-control" id="qty3" placeholder="Enter quantity"/><br>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4 text-center">
-                <label id="product4">IPhone 14 ProMax</label>
-                <img src="IP14.png" style="width:550px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product4" id="price4">68598.00</label>
+        <div class="row text-center">
+            <div class="col-4">
+                <label class="product-label" id="product4">IPhone 14 ProMax</label>
+                <img src="IP14.png" class="img-thumbnail product-image"/><br>
+                <label for="product4" class="product-price" id="price4">₱68,598.00</label>
                 <input type="number" class="form-control" id="qty4" placeholder="Enter quantity"/><br>
             </div>
-            <div class="col-4 text-center">
-                <label id="product5">IPhone 15 ProMax</label>
-                <img src="IP15.png" style="width:550px;height:500px;" class="img-thumbnail"/><br>
-                <label for="product5" id="price5">89879.00</label>
+            <div class="col-4">
+                <label class="product-label" id="product5">IPhone 15 ProMax</label>
+                <img src="IP15.png" class="img-thumbnail product-image"/><br>
+                <label for="product5" class="product-price" id="price5">₱89,879.00</label>
                 <input type="number" class="form-control" id="qty5" placeholder="Enter quantity"/><br>
             </div>
-             <div class="col-4">
-                <label for="carts">Orders</label><br>
+            <div class="col-4">
+                <label for="carts" class="product-label">Orders</label><br>
                 <textarea class="form-control" rows="29" id="carts" cols="200" readonly style="width:350px;height: 400px;font-size: 12px;"></textarea>
                 <input type="text" class="form-control border-0" id="total" readonly placeholder="Total"/>
                 <input type="number" class="form-control" id="cash" placeholder="Cash Tendered"/>
                 <button class="btn btn-primary mt-2" onclick="buyProducts()">BUY</button>
                 <input type="text" class="form-control border-0 mt-2" id="change" readonly placeholder="Change"/>
-             </div>
+            </div>
         </div>
     </div>
     <script src="index.js"></script>
